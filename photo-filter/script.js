@@ -20,10 +20,11 @@ const BTN_RESET = document.querySelector('.btn-reset');
 console.log(BTN_RESET);
 
 BTN_RESET.onclick = function(){
-  // inputs.forEach(input => input.value = );
+  inputs.forEach(input => input.value = input.defaultValue);
+  
   // document.getElementById('myform').reset();
-  console.log(document.getElementsByClassName('filters')[0]);
-  document.getElementsByClassName('filters')[0].reset();
+  // console.log(document.getElementsByClassName('filters')[0]);
+  // document.getElementsByClassName('filters')[0].reset();
 
   // document.getElementById('bodySlider').value = 0;
   // document.getElementById('leftArmSlider').value = -20;

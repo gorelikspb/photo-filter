@@ -76,3 +76,18 @@ function getImage() {
 } 
 
 btn.addEventListener('click', getImage);
+
+const fileInput = document.querySelector('input[type="file"]');
+// const imageContainer = document.querySelector('.image-container');
+
+fileInput.addEventListener('change', function(e) {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+  reader.onload = () => {
+    // const img = new Image();
+    IMG.src = reader.result;
+    // imageContainer.innerHTML = "";
+    // imageContainer.append(img);
+  }
+  reader.readAsDataURL(file);
+});

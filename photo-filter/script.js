@@ -112,3 +112,27 @@ function toggleFullScreen() {
     }
   }
 }
+
+
+// const canvas = document.querySelector('canvas');
+
+// function drawImage() {
+//   const img = new Image();
+//   img.setAttribute('crossOrigin', 'anonymous'); 
+//   img.src = "https://upload.wikimedia.org/wikipedia/commons/c/c9/Зимний_пейзаж.jpg";
+//   img.onload = function() {
+//     canvas.width = img.width;
+//     canvas.height = img.height;
+//     const ctx = canvas.getContext("2d");
+//     ctx.drawImage(img, 0, 0);
+
+//   };  
+// }
+// drawImage();
+// // console.log(img);
+// // const dataURL = canvas.toDataURL();
+// IMG.src = canvas.src;пше 
+// // IMG.src = dataURL;
+// // viewBgImage(dataURL);
+
+// // console.log(dataURL);

@@ -91,3 +91,22 @@ fileInput.addEventListener('change', function(e) {
   }
   reader.readAsDataURL(file);
 });
+
+
+const BTN_FULLSCREEN = document.querySelector(".fullscreen");
+
+
+BTN_FULLSCREEN.addEventListener('click', (event)=>{
+  toggleFullScreen();
+
+})
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}

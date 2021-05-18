@@ -31,6 +31,8 @@ BTN_RESET.onclick = function(){
       let suff = input.dataset.sizing || '';
       document.documentElement.style.setProperty(`--${input.name}`, input.value + suff);
       out.value = input.value;
+      drawImage();
+
     }
   );
 
@@ -62,7 +64,8 @@ function viewBgImage(src) {
   const img = new Image();
   img.src = src;
   img.onload = () => {      
-    IMG.src = `${src}`;
+    IMG.src = src;
+    drawImage();
   }; 
 }
 
@@ -114,21 +117,42 @@ function toggleFullScreen() {
 }
 
 
-// const canvas = document.querySelector('canvas');
+const canvas = document.querySelector('canvas');
 
-// function drawImage() {
-//   const img = new Image();
-//   img.setAttribute('crossOrigin', 'anonymous'); 
-//   img.src = "https://upload.wikimedia.org/wikipedia/commons/c/c9/Зимний_пейзаж.jpg";
-//   img.onload = function() {
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//     const ctx = canvas.getContext("2d");
-//     ctx.drawImage(img, 0, 0);
+function drawImage() {
+  const img_canv = new Image();
+  img_canv.setAttribute('crossOrigin', 'anonymous'); 
+  img_canv.src = IMG.src//"https://upload.wikimedia.org/wikipedia/commons/c/c9/Зимний_пейзаж.jpg";
+  img_canv.onload = function() {
+    canvas.width = img_canv.width;
+    canvas.height = img_canv.height;
+    const ctx = canvas.getContext("2d");
+    ctx.filter = getComputedStyle(img).filter;//.replace(`blur(${inputBlur}px)`, `blur(${inputBlur*coeff}px)`);
+    ctx.drawImage(img_canv, 0, 0);
 
-//   };  
-// }
-// drawImage();
+  };  
+}
+drawImage();
+
+
+const DOWNLOAD = document.querySelector('.btn-save');
+console.log (DOWNLOAD);
+
+
+// const IMG = document.querySelector('img');
+// console.log(IMG);
+
+DOWNLOAD.addEventListener('click', function(e) {
+  drawImage();
+  console.log(canvas.toDataURL());
+  const link = document.createElement('a');
+  link.download = 'download.png';
+  link.href = canvas.toDataURL();
+  link.click();
+  link.delete;
+});
+
+
 // // console.log(img);
 // // const dataURL = canvas.toDataURL();
 // IMG.src = canvas.src;пше 
